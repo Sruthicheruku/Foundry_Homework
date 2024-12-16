@@ -7,13 +7,13 @@ contract BooksTest is Test {
     Books public myBook;
 
     function setUp() public {
-        myBook = new Books("Programming Foundry", "Gowtham", 100);
+        myBook = new Books("Programming Foundry", "Sruthi cheruku", 100);
     }
 
     function test_get_book() public {
         Books.Book memory book = myBook.get_book();
         assertEq(book.title, "Programming Foundry");
-        assertEq(book.author, "Gowtham");
+        assertEq(book.author, "Sruthi cheruku");
         assertEq(book.pages, 100);
     }
 
