@@ -6,7 +6,7 @@ import {Books} from "../src/Books.sol";
 contract BooksScript is Script {
     function run() public returns (Books) {
         vm.startBroadcast();
-        Books myBook = new Books("Programming Foundry", "Gowtham", 100);
+        Books myBook = new Books("Programming Foundry", "Sruthi cheruku", 100);
         vm.stopBroadcast();
         return myBook;
     }
