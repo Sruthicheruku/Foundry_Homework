@@ -1,25 +1,34 @@
-pragma solidity 0.8.13;
+//SPDX-License-Identifier:MIT
+pragma solidity ^0.8.13;
 
-import {Test} from "forge-std/Test.sol";
-import {Books} from "../src/Books.sol";
+import {Test, console} from "forge-std/Test.sol";
+import "../src/Books.sol";
 
-contract BooksTest is Test {
-    Books public myBook;
+contract TestBooks is Test{
+
+    Books midterm;
+    Books.Book public book;
+
 
     function setUp() public {
-        myBook = new Books("Programming Foundry", "Sruthi cheruku", 100);
+        midterm = new Books("Programming Foundry", "Ellan", 100);
+        console.log("Midterm contract Deployed at:",address(midterm));
     }
 
-    function test_get_book() public {
-        Books.Book memory book = myBook.get_book();
-        assertEq(book.title, "Programming Foundry");
-        assertEq(book.author, "Sruthi cheruku");
-        assertEq(book.pages, 100);
+    function test_true() public pure{
+        assert(true);
     }
 
-    function test_updatePages() public {
-        myBook.update_pages(150);
-        Books.Book memory book = myBook.get_book();
-        assertEq(book.pages, 150);
+    function test_get_book() public{
+        book=midterm.get_book();
+        assertEq(book.pages,100);
+        assertEq(book.author,"Ellan");
+        assertEq(book.title,"Programming Foundry");
+    }
+
+    function test_update_pages() public{
+        midterm.update_pages(200);
+        book= midterm.get_book();
+        assertEq(book.pages,200);
     }
 }
